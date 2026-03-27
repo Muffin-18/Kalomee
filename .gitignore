@@ -1,0 +1,8 @@
+images/
+test images/
+__pycache__/
+*.pyc
+Conv2D_model.ipynb
+Food Nutrient Estimator.docx
+MergedDataGroup.csv
+ResNet50_model.ipynb
