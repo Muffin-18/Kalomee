@@ -1,11 +1,9 @@
 import config
-import loading
 import tensorflow as tf
 from tensorflow import keras
 from tensorflow.keras import layers
 from tensorflow.keras.applications import ResNet50
 from tensorflow.keras.applications.resnet50 import preprocess_input
-import numpy as np
 
 # Load datasets
 train_ds = tf.keras.utils.image_dataset_from_directory(
@@ -55,7 +53,7 @@ x = base_model(x, training=False)
 x = layers.GlobalAveragePooling2D()(x)
 x = layers.Dense(256, activation="relu")(x)
 x = layers.Dropout(0.3)(x)
-outputs = layers.Dense(loading.num_classes, activation="softmax")(x)
+outputs = layers.Dense(num_classes, activation="softmax")(x)
 model = keras.Model(inputs, outputs)
 
 model.compile(
@@ -67,7 +65,7 @@ model.compile(
 print("\nTraining model...")
 history = model.fit(
     train_ds,
-    validation_data=loading.val_ds,
+    validation_data=val_ds,
     epochs=config.EPOCHS
 )
 
@@ -85,7 +83,7 @@ model.compile(
 
 history_ft = model.fit(
     train_ds,
-    validation_data=loading.val_ds,
+    validation_data=val_ds,
     epochs=10
 )
 
