@@ -33,7 +33,7 @@ for box in results[0].boxes.xyxy:
 # -------------------------------
 # 5. Load ResNet50 model
 # -------------------------------
-resnet_model = ResNet50(weights='imagenet')
+resnet_model =tf.keras.models.load_model("food_cnn_model.keras")
 
 # -------------------------------
 # 6. Classification function
